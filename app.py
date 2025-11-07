@@ -10,6 +10,42 @@ model = pickle.load(open("gradient_boosting.pkl", "rb"))
 scaler = pickle.load(open("gb.pkl", "rb"))
 final_cols = model.feature_names_in_
 
+# Developer info
+developer_info = {
+    "name": "Your Name",
+    "phone": "+91-XXXXXXXXXX",
+    "email": "youremail@gmail.com",
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername"
+}
+
+# Model info
+model_info = {
+    "model_name": "Gradient Boosting Classifier",
+    "description": "Predicts if a customer is likely to churn based on their demographics, services, and billing patterns.",
+    "columns": [
+        {"name": "gender", "desc": "Customer gender: Male/Female"},
+        {"name": "SeniorCitizen", "desc": "0 = No, 1 = Yes"},
+        {"name": "Partner", "desc": "Whether customer has a partner: Yes/No"},
+        {"name": "Dependents", "desc": "Whether customer has dependents: Yes/No"},
+        {"name": "tenure", "desc": "Number of months customer has stayed"},
+        {"name": "PhoneService", "desc": "Phone service subscription: Yes/No"},
+        {"name": "MultipleLines", "desc": "Multiple phone lines: Yes/No/No phone service"},
+        {"name": "InternetService", "desc": "DSL/Fiber optic/No"},
+        {"name": "OnlineSecurity", "desc": "Online security subscription: Yes/No/No internet service"},
+        {"name": "OnlineBackup", "desc": "Online backup subscription: Yes/No/No internet service"},
+        {"name": "DeviceProtection", "desc": "Device protection subscription: Yes/No/No internet service"},
+        {"name": "TechSupport", "desc": "Tech support subscription: Yes/No/No internet service"},
+        {"name": "StreamingTV", "desc": "Streaming TV subscription: Yes/No/No internet service"},
+        {"name": "StreamingMovies", "desc": "Streaming movies subscription: Yes/No/No internet service"},
+        {"name": "Contract", "desc": "Contract type: Month-to-month/One year/Two year"},
+        {"name": "PaperlessBilling", "desc": "Paperless billing: Yes/No"},
+        {"name": "PaymentMethod", "desc": "Payment method: Electronic check / Mailed check / Credit card / Bank transfer"},
+        {"name": "MonthlyCharges_qan_iqr", "desc": "Monthly charges after preprocessing (numeric)"},
+        {"name": "TotalCharges_itr_qan_iqr", "desc": "Total charges after preprocessing (numeric)"}
+    ]
+}
+
 @app.route('/')
 def home():
     return render_template("index.html")
@@ -56,7 +92,7 @@ def predict():
             if col in df.columns:
                 df[col] = df[col].map(mapping).fillna(0)
 
-        # --- Numeric Columns (exact names from model) ---
+        # --- Numeric Columns ---
         numeric_cols = ['MonthlyCharges_qan_iqr', 'TotalCharges_itr_qan_iqr']
         for col in numeric_cols:
             if col in df.columns:
@@ -84,6 +120,14 @@ def predict():
         print("⚠️ Error:", e)
         traceback.print_exc()
         return f"⚠️ Error during prediction: {e}"
+
+@app.route('/about_developer')
+def about_developer():
+    return render_template("about_developer.html", developer=developer_info)
+
+@app.route('/about_model')
+def about_model():
+    return render_template("about_model.html", model=model_info)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Model</title>
+<style>
+body {
+  font-family: Poppins, sans-serif;
+  background: #eef2f7;
+  color: #1d2433;
+  margin: 0;
+  padding: 40px;
+}
+.card {
+  max-width: 800px;
+  margin: auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+h2 {
+  text-align: center;
+  color: #0d6efd;
+}
+h3 {
+  color: #0d6efd;
+  margin-top: 25px;
+}
+p, li {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.back {
+  display: inline-block;
+  margin-top: 20px;
+  background: #0d6efd;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.back:hover {
+  background: #0b5ed7;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <h2>About the Machine Learning Model</h2>
+
+  <p>
+    The <strong>Customer Churn Prediction Model</strong> is built to help telecom companies predict customers who are likely to discontinue their services.
+    It analyzes various demographic, service, and billing-related features to make accurate churn predictions.
+  </p>
+
+  <h3>Model Workflow</h3>
+  <ul>
+    <li>Performed data preprocessing including missing value handling and standardization using <strong>StandardScaler</strong>.</li>
+    <li>Encoded categorical variables using <strong>One-Hot Encoding</strong> for model interpretability.</li>
+    <li>Handled outliers using <strong>IQR capping</strong> and balanced data using <strong>SMOTE</strong> technique.</li>
+    <li>Predicted churn as binary output — <strong>0: Customer stays</strong>, <strong>1: Customer churns</strong>.</li>
+  </ul>
+
+  <h3>Features Used</h3>
+  <ul>
+    <li><strong>Demographics:</strong> Gender, SeniorCitizen, Partner, Dependents</li>
+    <li><strong>Services:</strong> PhoneService, InternetService, OnlineBackup, TechSupport, StreamingTV</li>
+    <li><strong>Billing & Contract:</strong> PaymentMethod, Contract, PaperlessBilling</li>
+    <li><strong>Numerical:</strong> MonthlyCharges, TotalCharges, Tenure</li>
+  </ul>
+
+  <h3>Model Finalization</h3>
+  <p>
+    After studying and experimenting with multiple machine learning algorithms like <strong>Logistic Regression</strong>,
+    <strong>Decision Tree</strong>, and <strong>Random Forest</strong>, the <strong>Gradient Boosting Classifier</strong>
+    was finalized for its superior accuracy, robustness, and ability to handle complex feature interactions effectively.
+  </p>
+
+  <h3>Purpose</h3>
+  <p>
+    This model empowers telecom providers to <strong>predict customer churn</strong> in advance, enabling them to design targeted
+    retention strategies and improve long-term customer loyalty.
+  </p>
+
+  <a href="/" class="back">← Back to Home</a>
+</div>
+</body>
+</html>
