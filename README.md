@@ -1,148 +1,139 @@
-# Churn-Prediction-using-Machine-Learning
-# AI-Powered Customer Retention Prediction System
+📊 AI-Powered Customer Retention Prediction System
+Churn Prediction using Machine Learning
+🧠 Project Overview
 
-![Churn Prediction](https://img.shields.io/badge/Project-Customer%20Churn-blue)
+Customer retention is one of the biggest challenges faced by telecom and service-based businesses. Acquiring new customers costs significantly more than retaining existing ones.
+This AI-powered Churn Prediction System helps businesses identify customers who are likely to discontinue their services and enables data-driven retention strategies.
 
-## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Business Problem](#business-problem)
-3. [Dataset](#dataset)
-4. [Methodology](#methodology)
-5. [Machine Learning Models](#machine-learning-models)
-6. [Features](#features)
-7. [Installation](#installation)
-8. [Usage](#usage)
-9. [Results](#results)
-10. [Future Enhancements](#future-enhancements)
-11. [Contributors](#contributors)
+The system leverages Machine Learning algorithms to predict customer churn based on demographics, service usage, billing behavior, and contract information.
 
----
+🚨 Business Problem
 
-## Project Overview
-Customer retention is a key challenge for businesses, as acquiring new customers is costlier than retaining existing ones. This project builds an **AI-powered system** to predict customers likely to churn and provide actionable insights for proactive retention strategies. The system uses machine learning to forecast churn probability based on customer demographics, usage behavior, billing patterns, and support interactions.
+Companies lose millions due to unexpected customer churn.
+This project addresses the following challenges:
 
----
+Detect customers likely to churn before they leave
 
-## Business Problem
-- Identify customers at risk of leaving the service (churners)
-- Reduce revenue loss due to unexpected customer exits
-- Enable proactive engagement strategies to improve retention
-- Segment customers based on risk and loyalty for personalized actions
+Reduce revenue loss and acquisition costs
 
----
+Understand key churn factors for business insights
 
-## Dataset
-The dataset is sourced from Kaggle: [Telco Customer Churn](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
+Enable proactive engagement and personalized retention offers
 
-**Key Columns:**
-| Column Name       | Data Type | Description |
-|------------------|-----------|-------------|
-| customerID        | string    | Unique customer identifier |
-| gender            | string    | Male/Female |
-| SeniorCitizen     | int       | 0 = No, 1 = Yes |
-| Partner           | string    | Yes/No |
-| Dependents        | string    | Yes/No |
-| tenure            | int       | Months with company |
-| PhoneService      | string    | Yes/No |
-| MultipleLines     | string    | Yes/No/No phone service |
-| InternetService   | string    | DSL/Fiber optic/No |
-| OnlineSecurity    | string    | Yes/No/No internet service |
-| Contract          | string    | Month-to-month/One year/Two year |
-| PaperlessBilling  | string    | Yes/No |
-| PaymentMethod     | string    | Payment type |
-| MonthlyCharges    | float     | Monthly billing amount |
-| TotalCharges      | float     | Total charges |
-| Churn             | string    | Target variable: Yes = churn, No = retained |
+🗂️ Dataset
 
----
+Dataset: Telco Customer Churn – Kaggle
 
-## Methodology
-1. **Data Preprocessing**
-   - Handle missing values
-   - Outlier treatment using **IQR method**
-   - Encode categorical features (OneHot, Ordinal, Label Encoding)
-   - Feature scaling (StandardScaler)
-   - Balance dataset using **SMOTE**
+Key Features
+Feature	Description
+customerID	Unique ID for each customer
+gender	Male / Female
+SeniorCitizen	1 = Yes, 0 = No
+Partner, Dependents	Relationship-based attributes influencing loyalty
+tenure	Number of months the customer has been with the company
+PhoneService, MultipleLines	Telephone service details
+InternetService, OnlineBackup, TechSupport	Type and usage of internet-related services
+Contract	Month-to-month / One-year / Two-year
+PaperlessBilling	Yes / No
+PaymentMethod	Electronic check / Bank transfer / Credit card / Mailed check
+MonthlyCharges, TotalCharges	Customer billing information
+Churn	Target variable — Yes (churned) / No (retained)
+⚙️ Methodology
+1️⃣ Data Preprocessing
 
-2. **Feature Selection**
-   - Chi-Square test for categorical features
-   - ANOVA, t-test, and correlation for numerical features
+Handled missing values and inconsistent data
 
-3. **Model Development**
-   - Train multiple models
-   - Evaluate using Accuracy, Precision, Recall, F1-Score, ROC-AUC
-   - Select best performing model (Gradient Boosting/XGBoost)
+Detected and capped outliers using the IQR (Interquartile Range) method
 
-4. **Deployment**
-   - User-friendly interface using Flask/Streamlit
-   - Input new customer data to get churn predictions
+Encoded categorical features using OneHot, Ordinal, and Label Encoding
 
----
+Scaled numerical columns with StandardScaler
 
-## Machine Learning Models
-- **Logistic Regression** – Baseline classifier
-- **K-Nearest Neighbors (KNN)** – Distance-based classification
-- **Naive Bayes** – Probabilistic classifier
-- **Decision Tree** – Tree-based model using entropy
-- **Random Forest** – Ensemble of decision trees
-- **XGBoost (Gradient Boosting)** – Advanced boosting algorithm, selected as final model
-- **Support Vector Machine (SVM)** – For linear/non-linear separation
+Balanced imbalanced data using SMOTE (Synthetic Minority Over-sampling Technique)
 
-*Note:* All models were trained with default hyperparameters, with XGBoost selected due to its higher accuracy and ROC-AUC performance.
+2️⃣ Feature Selection
 
----
+Chi-Square Test → for categorical features
 
-## Features
-- Customer demographics
-- Tenure and contract type
-- Payment method and billing patterns
-- Internet and phone services
-- Churn probability prediction
+ANOVA, t-Test, Correlation → for numerical features
 
----
+3️⃣ Model Training and Evaluation
 
-## Installation
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/churn-prediction.git
-cd churn-prediction
-Create and activate a virtual environment:
+Trained multiple models using scikit-learn and XGBoost, comparing their performance using:
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install dependencies:
+Accuracy
 
-bash
-Copy code
-pip install -r requirements.txt
-Usage
-Preprocess data and train models:
+Precision
 
-bash
-Copy code
-python train_model.py
-Run the Flask app for prediction:
+Recall
 
-bash
-Copy code
-python app.py
-Open http://127.0.0.1:5000/ in your browser to interact with the prediction system.
+F1-Score
 
-Results
-XGBoost achieved 80% accuracy on the test set.
+ROC-AUC Curve
 
-AUC-ROC curves generated to compare model performances.
+4️⃣ Deployment
 
-Confusion matrices and classification reports provide detailed model insights.
+A Flask Web Application was built to:
 
-Future Enhancements
-Integrate sentiment analysis from customer feedback
+Take new customer inputs through an interactive UI
 
-Deploy into CRM systems for real-time monitoring
+Predict churn probability
 
-Explore Deep Learning (RNN/LSTM) for temporal churn patterns
+Display prediction confidence and category
 
-Implement automated retention campaigns triggered by churn probability
+🤖 Machine Learning Models Evaluated
+Model	Description
+Logistic Regression	Baseline linear classifier
+K-Nearest Neighbors (KNN)	Instance-based model using distance metrics
+Naive Bayes	Probabilistic model assuming feature independence
+Decision Tree	Tree-based structure using entropy/gini
+Random Forest	Ensemble of decision trees to reduce variance
+Support Vector Machine (SVM)	Linear/non-linear classifier using kernels
+Gradient Boosting (XGBoost)	Combines weak learners; handles complex data efficiently ✅ (Final Model Selected)
 
+Model Finalization:
+After studying various ML algorithms and evaluating their results, Gradient Boosting Classifier was finalized for deployment due to its superior performance, ability to handle non-linearity, and robustness against overfitting.
+The model was trained using default parameters and achieved high stability and accuracy across datasets.
+
+🧾 Features of the Final System
+
+Interactive web interface using Flask
+
+Dynamic encoding and feature alignment
+
+Scaled and standardized numeric fields
+
+Real-time churn prediction with confidence score
+
+
+📈 Results & Evaluation
+
+Final Model: Gradient Boosting Classifier
+
+Test Accuracy: ~80%
+
+Precision/Recall Balance: Excellent
+
+AUC-ROC Curve: Demonstrated clear class separability
+
+Confusion Matrix: Validated consistent predictions across churn/non-churn categories
+
+🚀 Future Enhancements
+
+Integrate Sentiment Analysis from customer feedback or social media
+
+Deploy into CRM systems for real-time retention tracking
+
+Use Deep Learning (LSTM/RNN) to model time-based churn patterns
+
+Build automated retention campaign triggers based on churn probability
+
+👩‍💻 Developer
+
+Name: K. Yamini Krishna
+Email: yamini.kelam1@gmail.com
+
+Phone: +91 81218 54228
+GitHub: github.com/yaminikrish
+
+LinkedIn: linkedin.com/in/yamini-krishna-445412367
