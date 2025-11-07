@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediction Result</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1000/1000212.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #c3cfe2, #f5f7fa);
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .result-card {
+      background: #ffffff;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 500px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      color: #007bff;
+      margin-bottom: 1rem;
+    }
+
+    .prediction {
+      font-size: 1.4rem;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .stay {
+      background-color: #e0ffe5;
+      color: #008000;
+      border: 2px solid #00b300;
+    }
+
+    .churn {
+      background-color: #ffe5e5;
+      color: #cc0000;
+      border: 2px solid #ff3333;
+    }
+
+    .probability {
+      font-size: 1.1rem;
+      color: #333;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(45deg, #007bff, #00c6ff);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(45deg, #0056b3, #00a3cc);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    footer span {
+      color: #007bff;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="result-card">
+    <h1>📊 Prediction Result</h1>
+
+    {% if "STAY" in prediction_text %}
+      <div class="prediction stay">{{ prediction_text }}</div>
+    {% else %}
+      <div class="prediction churn">{{ prediction_text }}</div>
+    {% endif %}
+
+    <p class="probability">Model Confidence: <strong>{{ proba }}%</strong></p>
+
+    <button class="btn" onclick="window.location.href='/'">
+      🔁 Predict Another
+    </button>
+
+
+  </div>
+
+</body>
+</html>
