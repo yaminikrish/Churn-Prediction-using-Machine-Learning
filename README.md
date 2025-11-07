@@ -103,9 +103,11 @@ Confusion Matrix: Validated consistent predictions across churn/non-churn catego
 **👩‍💻 Develope**r
 
 Name: K. Yamini Krishna
+
 Email: yamini.kelam1@gmail.com
 
 Phone: +91 81218 54228
+
 GitHub: github.com/yaminikrish
 
 LinkedIn: linkedin.com/in/yamini-krishna-445412367
